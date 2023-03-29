@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan("common"));
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
@@ -31,7 +31,7 @@ mongoose
 	} as ConnectOptions)
 	.then(async () => {
 		app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-		await mongoose.connection.db.dropDatabase();
-		KPI.insertMany(kpis);
+		// await mongoose.connection.db.dropDatabase();
+		// KPI.insertMany(kpis);
 	})
 	.catch((err) => console.log(`${err} did not connect`));
