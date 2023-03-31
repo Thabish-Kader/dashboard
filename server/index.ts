@@ -6,8 +6,11 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import kpiRoutes from "./routes/kpi";
+import productRoutes from "./routes/product";
+import Product from "./models/Product";
 import KPI from "./models/KPI";
-import { kpis } from "./data";
+import { kpis, products } from "./data";
+
 // config
 dotenv.config();
 const app = express();
@@ -21,6 +24,7 @@ app.use(cors());
 
 // routes
 app.use("/kpi", kpiRoutes);
+app.use("/product", productRoutes);
 
 // Mongoose config
 const PORT = process.env.PORT || 9000;
@@ -33,5 +37,6 @@ mongoose
 		app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 		// await mongoose.connection.db.dropDatabase();
 		// KPI.insertMany(kpis);
+		// Product.insertMany(products);
 	})
 	.catch((err) => console.log(`${err} did not connect`));
