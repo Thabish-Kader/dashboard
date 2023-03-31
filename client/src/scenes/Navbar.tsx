@@ -45,7 +45,7 @@ const Navbar = (props: Props) => {
 				</Box>
 				<Box sx={{ "&:hover": { color: palette.primary[100] } }}>
 					<Link
-						to="/predicitons"
+						to="/prediction"
 						onClick={() => setSeleted("predictions")}
 						style={{
 							color:
